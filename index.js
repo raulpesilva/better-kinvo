@@ -2,7 +2,7 @@
 // @name         Better Kinvo
 // @namespace    https://github.com/raulpesilva/better-kinvo
 // @version      0.2
-// @description  auto get chest on twitch stream
+// @description  add filter and profit
 // @author       RaulPeSilva
 // @match        https://app.kinvo.com.br/*
 // @grant        none
