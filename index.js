@@ -10,7 +10,7 @@
 
 (function () {
   'use strict';
-  const INITIAL_TIMEOUT = 5000;
+  const INITIAL_TIMEOUT = 2000;
   const FILTER_PLACE_SELECTOR = '#root > div > div > main > section > div > section + section + section > div';
   const CONTAINER_STOCK_SELECTOR = '#root > div > div > main > section > div > section > div > div > div > div > div';
   const HEADER_STOCK_SELECTOR = '#root > div > div > header > div > div';
@@ -60,7 +60,7 @@
   }
 
   function onlyNumbers(value) {
-    return Number(value.replace(/\D/g, ''));
+    return Number(value.replace(/[^0-9-]/gm, ''));
   }
 
   function filterByValue() {
@@ -104,8 +104,26 @@
 
   function createFilterSection() {
     const $header = document.querySelector(HEADER_STOCK_SELECTOR);
-    const $profit = $header.querySelector('div').cloneNode(true);
-    console.log($profit);
+    $header.style.gridTemplateColumns = 'auto auto auto auto';
+    const $stats = $header.querySelectorAll('div');
+    const $profit = $stats[0].cloneNode(true);
+    const balance = onlyNumbers($stats[0].textContent);
+    const value = onlyNumbers($stats[5].textContent);
+    const $title = $profit.querySelectorAll('div')[2];
+    const $value = $profit.querySelectorAll('div')[3];
+    if ($title && $value) {
+      $value.textContent = Intl.NumberFormat('pt-BR', { currency: 'brl', style: 'currency' }).format(
+        (balance - value) / 100
+      );
+      $title.textContent = 'Lucro';
+    }
+
+    const balanceAlreadyExists = document.querySelector('#better-kinvo-balance');
+    if (!balanceAlreadyExists) {
+      $header.prepend($profit);
+    }
+    console.log($title, $value);
+    console.log($profit.querySelectorAll('div'));
     const $container = document.querySelector(FILTER_PLACE_SELECTOR);
 
     const $buttonFilterByName = createButton('Nome', filterByName);
