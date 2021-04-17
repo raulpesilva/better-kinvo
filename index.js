@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Kinvo
 // @namespace    https://github.com/raulpesilva/better-kinvo
-// @version      0.2
+// @version      0.3
 // @description  add filter and profit
 // @author       RaulPeSilva
 // @match        https://app.kinvo.com.br/*
@@ -207,11 +207,12 @@ function applyCss() {
       border: none;
       font-weight: bold;
       color: rgb(98, 113, 121);
-      background-color: rgb(218, 224, 227);
+      background-color: rgb(248, 249, 249);
+      transition-duration: 250ms;
     }
 
     .bk-button:hover {
-      background-color: rgb(200, 200, 207);
+      background-color: #f0f0f0;
       cursor: pointer;
     }
 
