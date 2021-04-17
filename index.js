@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Kinvo
-// @namespace    https://github.com/raulpesilva/twitch-auto-get-chest
-// @version      0.1
+// @namespace    https://github.com/raulpesilva/better-kinvo
+// @version      0.2
 // @description  auto get chest on twitch stream
 // @author       RaulPeSilva
 // @match        https://app.kinvo.com.br/*
