@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Kinvo
 // @namespace    https://github.com/raulpesilva/better-kinvo
-// @version      0.3
+// @version      0.4
 // @description  add filter and profit
 // @author       RaulPeSilva
 // @match        https://app.kinvo.com.br/*
@@ -13,7 +13,7 @@
   const INITIAL_TIMEOUT = 2000;
   const FILTER_PLACE_SELECTOR = '#root > div > div > main > section > div > section + section + section > div';
   const CONTAINER_STOCK_SELECTOR = '#root > div > div > main > section > div > section > div > div > div > div > div';
-  const HEADER_STOCK_SELECTOR = '#root > div > div > header > div > div';
+  const HEADER_STOCK_SELECTOR = '#root > div > div > header > div > div + div';
   const ID_BALANCE = 'better-kinvo-balance';
   const ID_FILTER = 'better-kinvo-place';
 
@@ -89,7 +89,7 @@
       $value.textContent = Intl.NumberFormat('pt-BR', { currency: 'brl', style: 'currency' }).format(
         (balance - value) / 100
       );
-      $title.textContent = 'Lucro';
+      $title.textContent = 'Lucro Estimado';
     }
 
     $header.prepend($profit);
